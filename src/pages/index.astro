@@ -1,15 +1,475 @@
 ---
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+const asset = (path) => `/diicsacv.com/wp-content/uploads/${path}`;
 
-const html = (await readFile(join(process.cwd(), 'diicsacv.com', 'index.html'), 'utf8')).replace(
-  '<head>',
-  '<head><base href="/diicsacv.com/">'
-);
-
-return new Response(html, {
-  headers: {
-    'content-type': 'text/html; charset=utf-8',
+const slides = [
+  {
+    title: 'Arquitectura',
+    icon: asset('2022/03/business_black_48dp.svg'),
+    image: asset('2021/11/architects-working-on-blueprints.jpg'),
   },
-});
+  {
+    title: 'Preparacion del sitio',
+    icon: asset('2022/03/grid_view_black_48dp.svg'),
+    image: asset('2021/11/mini-excavator-digging-preparing-ground-under-home-garden.jpg'),
+  },
+  {
+    title: 'Construccion',
+    icon: asset('2022/03/view_in_ar_black_48dp.svg'),
+    image: asset('2021/11/a-man-worker-outdoors-on-construction-site-working.jpg'),
+  },
+  {
+    title: 'Entrega',
+    icon: asset('2022/03/handshake_black_48dp.svg'),
+    image: asset('2021/11/shopping-commercial-center-concept-with-fashion-lady-with-phone-speaking-and-looking.jpg'),
+  },
+];
+
+const services = [
+  {
+    title: 'Bienvenidos',
+    image: asset('2019/06/service1.jpg'),
+    href: '/diicsacv.com/bienvenidos/',
+  },
+  {
+    title: 'Certificados',
+    image: asset('2019/06/service2.jpg'),
+    href: '/diicsacv.com/certificados/',
+  },
+  {
+    title: 'Historia',
+    image: asset('2019/06/service3.jpg'),
+    href: '/diicsacv.com/historia/',
+  },
+];
+
+const about = [
+  {
+    title: 'VISION',
+    text: 'Mantenernos a la cabeza como lideres en el ramo de construccion, mantenimiento y dictaminacion de componentes automotrices.',
+    href: '/diicsacv.com/vision/',
+  },
+  {
+    title: 'MISION',
+    text: 'Construir, promover, analizar, desarrollar y dar mantenimiento integral, superando las necesidades de nuestros clientes.',
+    href: '/diicsacv.com/mision/',
+  },
+  {
+    title: 'POLITICA',
+    text: 'Estamos comprometidos con nuestros clientes, nuestra gente, el medio ambiente y nuestro pais como empresa multifuncional.',
+    href: '/diicsacv.com/politica/',
+  },
+  {
+    title: 'CAPACITACION',
+    text: 'Contamos con personal altamente capacitado e instructores acreditados para respaldar cada proyecto.',
+    href: '/diicsacv.com/capacitacion/',
+  },
+];
 ---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DIICSA // Constructora mexicana</title>
+    <meta
+      name="description"
+      content="DIICSA, constructora mexicana especializada en diseno, construccion, mantenimiento integral y dictaminacion."
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topbar">
+        <a href="tel:525526020324">+52 55 2602 0324</a>
+        <span>Lunes a Viernes, 8 a 17h</span>
+        <nav aria-label="Social">
+          <a href="https://wa.me/525526020324">WhatsApp</a>
+          <a href="https://www.linkedin.com/company/diicsacv">LinkedIn</a>
+        </nav>
+      </div>
+      <div class="nav-wrap">
+        <a class="brand" href="/">
+          <img src={asset('2022/10/logo_diicsa.jpg')} alt="DIICSA" />
+        </a>
+        <nav class="main-nav" aria-label="Principal">
+          <a href="/">Inicio</a>
+          <a href="/diicsacv.com/historia/">Nosotros</a>
+          <a href="/diicsacv.com/presencia/">Presencia</a>
+          <a href="/diicsacv.com/edificacion-y-rehabilitacion/">Servicios</a>
+          <a href="/diicsacv.com/clientes/">Clientes</a>
+          <a href="/diicsacv.com/contacta-con-nosotras/">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="DIICSA servicios">
+        {slides.map((slide, index) => (
+          <article class:list={['hero-slide', index === 0 && 'is-active']} style={`--hero-image: url('${slide.image}')`}>
+            <div class="hero-overlay">
+              <p>DIICSA</p>
+              <div class="hero-title">
+                <img src={slide.icon} alt="" />
+                <h1>{slide.title}</h1>
+              </div>
+              <div class="hero-copy">
+                Estamos disenados para respaldar las necesidades de los administradores de propiedades.
+                Ya sea que este trabajando en una oficina, sobre la marcha o buscando optimizar las
+                finanzas, lo tenemos cubierto.
+              </div>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Nuestros servicios</h2>
+          <div class="service-grid">
+            {services.map((service) => (
+              <a class="service-card" href={service.href}>
+                <img src={service.image} alt={service.title} />
+                <span>{service.title}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container split">
+          <div>
+            <p class="eyebrow">Quienes somos?</p>
+            <h2>Empresa 100% mexicana fundada en 2002</h2>
+            <p>
+              Especializada en diseno, construccion y mantenimiento integral a empresas y particulares,
+              con presencia en la Republica Mexicana.
+            </p>
+            <a class="button" href="/diicsacv.com/contacta-con-nosotras/">Consigue una cotizacion</a>
+          </div>
+          <div class="about-grid">
+            {about.map((item) => (
+              <a class="about-card" href={item.href}>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <img src={asset('2022/10/logo_diicsa.jpg')} alt="DIICSA" />
+        <p>DIICSA // Constructora Mexicana | Todos los derechos reservados</p>
+        <a href="/diicsacv.com/aviso-privacidad/">Aviso de Privacidad</a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :root {
+    --blue: #00214e;
+    --blue-soft: #314e77;
+    --pink: #d3316b;
+    --ink: #263241;
+    --muted: #6d7480;
+    --line: #d9dee6;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: #fff;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .topbar {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    color: #5f6670;
+    font-size: 16px;
+    background: #fff;
+  }
+
+  .topbar nav {
+    display: flex;
+    gap: 10px;
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  .nav-wrap {
+    min-height: 126px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(36px, 9vw, 210px);
+    padding: 16px 24px;
+    background: rgba(0, 33, 78, 0.82);
+    color: #fff;
+  }
+
+  .brand img {
+    width: 124px;
+    height: 110px;
+    object-fit: contain;
+    background: #fff;
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 3vw, 48px);
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .main-nav a:first-child {
+    color: #b5b5b5;
+    border-bottom: 4px solid #fff;
+    padding-bottom: 18px;
+  }
+
+  .hero {
+    position: relative;
+    min-height: clamp(520px, 66vw, 830px);
+    overflow: hidden;
+    background: var(--blue);
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    background-image: linear-gradient(rgba(0, 33, 78, 0.26), rgba(0, 33, 78, 0.18)), var(--hero-image);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-slide.is-active {
+    display: flex;
+  }
+
+  .hero-overlay {
+    width: min(1380px, 100%);
+  }
+
+  .hero-overlay > p {
+    margin: 0 0 16px;
+    color: var(--blue);
+    font-size: clamp(36px, 4vw, 62px);
+    font-weight: 800;
+  }
+
+  .hero-title {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 4vw, 60px);
+    min-height: 190px;
+    padding: 28px 42px;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.68);
+  }
+
+  .hero-title img {
+    width: clamp(70px, 9vw, 132px);
+    height: clamp(70px, 9vw, 132px);
+    object-fit: contain;
+  }
+
+  .hero-title h1 {
+    margin: 0;
+    color: var(--blue);
+    font-size: clamp(56px, 8vw, 132px);
+    line-height: 1;
+  }
+
+  .hero-copy {
+    width: min(1110px, 78%);
+    margin: 14px auto 0;
+    padding: 24px 30px;
+    border-radius: 24px;
+    background: var(--blue);
+    color: #fff;
+    font-size: clamp(20px, 2.1vw, 31px);
+    line-height: 1.45;
+  }
+
+  .section {
+    padding: 64px 24px;
+  }
+
+  .container {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin: 0 0 30px;
+    color: #777;
+    font-size: clamp(32px, 3.2vw, 48px);
+    line-height: 1.1;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .service-card {
+    display: grid;
+    gap: 16px;
+    color: #777;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .service-card img {
+    width: 100%;
+    aspect-ratio: 850 / 519;
+    object-fit: cover;
+  }
+
+  .section-muted {
+    background: #f6f7f9;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .eyebrow {
+    margin: 0 0 12px;
+    color: #777;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .split p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .button {
+    display: inline-flex;
+    margin-top: 18px;
+    padding: 13px 18px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .about-card {
+    min-height: 170px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .about-card h3 {
+    margin: 0 0 16px;
+    color: var(--pink);
+    font-size: 28px;
+  }
+
+  .about-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .site-footer {
+    padding: 34px 24px;
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .footer-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .footer-grid img {
+    width: 82px;
+    height: 73px;
+    object-fit: contain;
+    background: #fff;
+  }
+
+  @media (max-width: 860px) {
+    .topbar,
+    .nav-wrap,
+    .main-nav,
+    .footer-grid {
+      flex-wrap: wrap;
+    }
+
+    .nav-wrap {
+      gap: 20px;
+    }
+
+    .main-nav {
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .hero {
+      min-height: 640px;
+    }
+
+    .hero-title {
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 0;
+    }
+
+    .hero-copy {
+      width: 100%;
+    }
+
+    .service-grid,
+    .split,
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
