@@ -1,5 +1,6 @@
 ---
-const asset = (path) => `/diicsacv.com/wp-content/uploads/${path}`;
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { asset, servicePages } from '../data/site.js';
 
 const slides = [
   {
@@ -28,80 +29,46 @@ const services = [
   {
     title: 'Bienvenidos',
     image: asset('2019/06/service1.jpg'),
-    href: '/diicsacv.com/bienvenidos/',
+    href: '/bienvenidos/',
   },
   {
     title: 'Certificados',
     image: asset('2019/06/service2.jpg'),
-    href: '/diicsacv.com/certificados/',
+    href: '/certificados/',
   },
   {
     title: 'Historia',
     image: asset('2019/06/service3.jpg'),
-    href: '/diicsacv.com/historia/',
+    href: '/historia/',
   },
+  ...servicePages.map((service) => ({ ...service, href: `/${service.slug}/` })),
 ];
 
 const about = [
   {
     title: 'VISION',
     text: 'Mantenernos a la cabeza como lideres en el ramo de construccion, mantenimiento y dictaminacion de componentes automotrices.',
-    href: '/diicsacv.com/vision/',
+    href: '/vision/',
   },
   {
     title: 'MISION',
     text: 'Construir, promover, analizar, desarrollar y dar mantenimiento integral, superando las necesidades de nuestros clientes.',
-    href: '/diicsacv.com/mision/',
+    href: '/mision/',
   },
   {
     title: 'POLITICA',
     text: 'Estamos comprometidos con nuestros clientes, nuestra gente, el medio ambiente y nuestro pais como empresa multifuncional.',
-    href: '/diicsacv.com/politica/',
+    href: '/politica/',
   },
   {
     title: 'CAPACITACION',
     text: 'Contamos con personal altamente capacitado e instructores acreditados para respaldar cada proyecto.',
-    href: '/diicsacv.com/capacitacion/',
+    href: '/capacitacion/',
   },
 ];
 ---
 
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DIICSA // Constructora mexicana</title>
-    <meta
-      name="description"
-      content="DIICSA, constructora mexicana especializada en diseno, construccion, mantenimiento integral y dictaminacion."
-    />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="topbar">
-        <a href="tel:525526020324">+52 55 2602 0324</a>
-        <span>Lunes a Viernes, 8 a 17h</span>
-        <nav aria-label="Social">
-          <a href="https://wa.me/525526020324">WhatsApp</a>
-          <a href="https://www.linkedin.com/company/diicsacv">LinkedIn</a>
-        </nav>
-      </div>
-      <div class="nav-wrap">
-        <a class="brand" href="/">
-          <img src={asset('2022/10/logo_diicsa.jpg')} alt="DIICSA" />
-        </a>
-        <nav class="main-nav" aria-label="Principal">
-          <a href="/">Inicio</a>
-          <a href="/diicsacv.com/historia/">Nosotros</a>
-          <a href="/diicsacv.com/presencia/">Presencia</a>
-          <a href="/diicsacv.com/edificacion-y-rehabilitacion/">Servicios</a>
-          <a href="/diicsacv.com/clientes/">Clientes</a>
-          <a href="/diicsacv.com/contacta-con-nosotras/">Contacto</a>
-        </nav>
-      </div>
-    </header>
-
+<SiteLayout>
     <main>
       <section class="hero" aria-label="DIICSA servicios">
         {slides.map((slide, index) => (
@@ -145,7 +112,7 @@ const about = [
               Especializada en diseno, construccion y mantenimiento integral a empresas y particulares,
               con presencia en la Republica Mexicana.
             </p>
-            <a class="button" href="/diicsacv.com/contacta-con-nosotras/">Consigue una cotizacion</a>
+            <a class="button" href="/contacta-con-nosotras/">Consigue una cotizacion</a>
           </div>
           <div class="about-grid">
             {about.map((item) => (
@@ -158,99 +125,9 @@ const about = [
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <img src={asset('2022/10/logo_diicsa.jpg')} alt="DIICSA" />
-        <p>DIICSA // Constructora Mexicana | Todos los derechos reservados</p>
-        <a href="/diicsacv.com/aviso-privacidad/">Aviso de Privacidad</a>
-      </div>
-    </footer>
-  </body>
-</html>
+</SiteLayout>
 
 <style>
-  :root {
-    --blue: #00214e;
-    --blue-soft: #314e77;
-    --pink: #d3316b;
-    --ink: #263241;
-    --muted: #6d7480;
-    --line: #d9dee6;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    font-family: Roboto, Arial, sans-serif;
-    color: var(--ink);
-    background: #fff;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-  }
-
-  .topbar {
-    min-height: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-    color: #5f6670;
-    font-size: 16px;
-    background: #fff;
-  }
-
-  .topbar nav {
-    display: flex;
-    gap: 10px;
-    color: var(--blue);
-    font-weight: 700;
-  }
-
-  .nav-wrap {
-    min-height: 126px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(36px, 9vw, 210px);
-    padding: 16px 24px;
-    background: rgba(0, 33, 78, 0.82);
-    color: #fff;
-  }
-
-  .brand img {
-    width: 124px;
-    height: 110px;
-    object-fit: contain;
-    background: #fff;
-  }
-
-  .main-nav {
-    display: flex;
-    align-items: center;
-    gap: clamp(18px, 3vw, 48px);
-    font-size: 17px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-  .main-nav a:first-child {
-    color: #b5b5b5;
-    border-bottom: 4px solid #fff;
-    padding-bottom: 18px;
-  }
-
   .hero {
     position: relative;
     min-height: clamp(520px, 66vw, 830px);
@@ -321,18 +198,6 @@ const about = [
 
   .section {
     padding: 64px 24px;
-  }
-
-  .container {
-    width: min(1180px, 100%);
-    margin: 0 auto;
-  }
-
-  h2 {
-    margin: 0 0 30px;
-    color: #777;
-    font-size: clamp(32px, 3.2vw, 48px);
-    line-height: 1.1;
   }
 
   .service-grid {
@@ -415,43 +280,7 @@ const about = [
     line-height: 1.6;
   }
 
-  .site-footer {
-    padding: 34px 24px;
-    background: var(--blue);
-    color: #fff;
-  }
-
-  .footer-grid {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-
-  .footer-grid img {
-    width: 82px;
-    height: 73px;
-    object-fit: contain;
-    background: #fff;
-  }
-
   @media (max-width: 860px) {
-    .topbar,
-    .nav-wrap,
-    .main-nav,
-    .footer-grid {
-      flex-wrap: wrap;
-    }
-
-    .nav-wrap {
-      gap: 20px;
-    }
-
-    .main-nav {
-      justify-content: center;
-      font-size: 14px;
-    }
-
     .hero {
       min-height: 640px;
     }

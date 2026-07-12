@@ -1,0 +1,104 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { pages } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+---
+
+<SiteLayout title={`${page.title} - DIICSA`} description={page.body[0]}>
+  <main>
+    <section class="page-hero" style={`--hero-image: url('${page.image}')`}>
+      <div class="container">
+        <p class="eyebrow">{page.eyebrow}</p>
+        <h1>{page.title}</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container content-grid">
+        <article class="prose">
+          {page.body.map((paragraph) => <p>{paragraph}</p>)}
+
+          {page.contact && (
+            <div class="contact-panel">
+              <a href="tel:525526020324">+52 55 2602 0324</a>
+              <a href="https://wa.me/525526020324">WhatsApp</a>
+              <a href="mailto:contacto@diicsacv.com">contacto@diicsacv.com</a>
+            </div>
+          )}
+
+          {page.documents && (
+            <div class="document-grid">
+              {page.documents.map((document) => (
+                <a class="document-card" href={document.href}>
+                  <span>{document.label}</span>
+                  <strong>Ver PDF</strong>
+                </a>
+              ))}
+            </div>
+          )}
+        </article>
+
+        <aside>
+          <img class="feature-image" src={page.image} alt={page.title} />
+          <a class="button" href="/contacta-con-nosotras/">Solicitar cotizacion</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .contact-panel {
+    display: grid;
+    gap: 12px;
+    margin-top: 30px;
+    padding: 24px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .document-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .document-card {
+    display: grid;
+    gap: 10px;
+    min-height: 120px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .document-card span {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .document-card strong {
+    color: var(--pink);
+  }
+
+  aside {
+    display: grid;
+    gap: 22px;
+  }
+
+  @media (max-width: 760px) {
+    .document-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
