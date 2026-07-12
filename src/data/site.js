@@ -158,7 +158,7 @@ export const pages = [
     slug: 'aviso-privacidad',
     title: 'Aviso de Privacidad',
     eyebrow: 'Legal',
-    image: asset('2022/10/logo_diicsa.jpg'),
+    image: asset('2021/11/close-up-of-hands-with-ruler-measuring-blueprint.jpg'),
     body: [
       'DIICSA INFRAESTRUCTURA es responsable del tratamiento de sus datos personales conforme a la legislacion aplicable en Mexico y otros marcos de privacidad relevantes.',
     ],
