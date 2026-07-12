@@ -37,8 +37,8 @@ const footerText = isEnglish
           <a href="https://www.linkedin.com/company/diicsacv">LinkedIn</a>
         </nav>
         <nav class="language-nav" aria-label="Language">
-          <a class:list={[!isEnglish && 'is-active']} href={spanishHref}>ES</a>
           <a class:list={[isEnglish && 'is-active']} href={englishHref}>EN</a>
+          <a class:list={[!isEnglish && 'is-active']} href={spanishHref}>ES</a>
         </nav>
       </div>
       <div class="nav-wrap">
@@ -119,8 +119,14 @@ const footerText = isEnglish
   }
 
   .language-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
     padding-left: 12px;
     border-left: 1px solid var(--line);
+    font-size: 13px;
+    line-height: 1;
   }
 
   .language-nav a {
