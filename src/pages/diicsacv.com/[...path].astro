@@ -1,0 +1,35 @@
+---
+import { access, readdir, readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+export async function getStaticPaths() {
+  const mirrorRoot = join(process.cwd(), 'diicsacv.com');
+  const entries = await readdir(mirrorRoot, { withFileTypes: true });
+  const pageDirs = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+
+    try {
+      await access(join(mirrorRoot, entry.name, 'index.html'));
+      pageDirs.push(entry.name);
+    } catch {
+      // Asset directories are copied to public but do not become Astro routes.
+    }
+  }
+
+  return pageDirs.map((entry) => ({
+      params: { path: entry },
+      props: { slug: entry },
+    }));
+}
+
+const mirrorRoot = join(process.cwd(), 'diicsacv.com');
+const html = await readFile(join(mirrorRoot, Astro.props.slug, 'index.html'), 'utf8');
+
+return new Response(html, {
+  headers: {
+    'content-type': 'text/html; charset=utf-8',
+  },
+});
+---
