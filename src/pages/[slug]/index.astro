@@ -27,11 +27,39 @@ const { page } = Astro.props;
           {page.body.map((paragraph) => <p>{paragraph}</p>)}
 
           {page.contact && (
-            <div class="contact-panel">
-              <a href="tel:525526020324">+52 55 2602 0324</a>
-              <a href="https://wa.me/525526020324">WhatsApp</a>
-              <a href="mailto:contacto@diicsacv.com">contacto@diicsacv.com</a>
-            </div>
+            <>
+              <form class="contact-form" action="https://formspree.io/f/xkodwzad" method="POST">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde DIICSA" />
+                <input
+                  type="hidden"
+                  name="_redirect"
+                  value="https://diicsacv.vercel.app/contacta-con-nosotras/"
+                />
+                <label>
+                  Nombre
+                  <input type="text" name="name" autocomplete="name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+                <label>
+                  Telefono
+                  <input type="tel" name="phone" autocomplete="tel" />
+                </label>
+                <label>
+                  Mensaje
+                  <textarea name="message" rows="5" required></textarea>
+                </label>
+                <button class="button" type="submit">Enviar mensaje</button>
+              </form>
+
+              <div class="contact-panel">
+                <a href="tel:525526020324">+52 55 2602 0324</a>
+                <a href="https://wa.me/525526020324">WhatsApp</a>
+                <a href="mailto:contacto@diicsacv.com">contacto@diicsacv.com</a>
+              </div>
+            </>
           )}
 
           {page.documents && (
@@ -64,6 +92,42 @@ const { page } = Astro.props;
     background: var(--blue);
     color: #fff;
     font-weight: 700;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 18px;
+    margin-top: 30px;
+    padding: 26px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .contact-form label {
+    display: grid;
+    gap: 8px;
+    color: var(--ink);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    padding: 13px 14px;
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+  }
+
+  .contact-form .button {
+    width: fit-content;
+    border: 0;
+    cursor: pointer;
   }
 
   .document-grid {
