@@ -1,0 +1,308 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { asset, servicePagesEn } from '../../data/site.js';
+
+const slides = [
+  {
+    title: 'Architecture',
+    icon: asset('2022/03/business_black_48dp.svg'),
+    image: asset('2021/11/architects-working-on-blueprints.jpg'),
+  },
+  {
+    title: 'Site preparation',
+    icon: asset('2022/03/grid_view_black_48dp.svg'),
+    image: asset('2021/11/mini-excavator-digging-preparing-ground-under-home-garden.jpg'),
+  },
+  {
+    title: 'Construction',
+    icon: asset('2022/03/view_in_ar_black_48dp.svg'),
+    image: asset('2021/11/a-man-worker-outdoors-on-construction-site-working.jpg'),
+  },
+  {
+    title: 'Delivery',
+    icon: asset('2022/03/handshake_black_48dp.svg'),
+    image: asset('2021/11/shopping-commercial-center-concept-with-fashion-lady-with-phone-speaking-and-looking.jpg'),
+  },
+];
+
+const services = [
+  {
+    title: 'Welcome',
+    image: asset('2019/06/service1.jpg'),
+    href: '/en/bienvenidos/',
+  },
+  {
+    title: 'Certificates',
+    image: asset('2019/06/service2.jpg'),
+    href: '/en/certificados/',
+  },
+  {
+    title: 'History',
+    image: asset('2019/06/service3.jpg'),
+    href: '/en/historia/',
+  },
+  ...servicePagesEn.map((service) => ({ ...service, href: `/en/${service.slug}/` })),
+];
+
+const about = [
+  {
+    title: 'VISION',
+    text: 'To remain at the forefront as leaders in construction, maintenance and technical assessment.',
+    href: '/en/vision/',
+  },
+  {
+    title: 'MISSION',
+    text: 'To build, promote, analyze, develop and provide integral maintenance, exceeding our clients needs.',
+    href: '/en/mision/',
+  },
+  {
+    title: 'POLICY',
+    text: 'We are committed to our clients, our people, the environment and our country as a multifunctional company.',
+    href: '/en/politica/',
+  },
+  {
+    title: 'TRAINING',
+    text: 'We have highly trained personnel and accredited instructors to support every project.',
+    href: '/en/capacitacion/',
+  },
+];
+---
+
+<SiteLayout
+  lang="en"
+  title="DIICSA // Mexican Construction Company"
+  description="Mexican construction company specialized in design, construction and integral maintenance."
+>
+  <main>
+    <section class="hero" aria-label="DIICSA services">
+      {slides.map((slide, index) => (
+        <article class:list={['hero-slide', index === 0 && 'is-active']} style={`--hero-image: url('${slide.image}')`}>
+          <div class="hero-overlay">
+            <p>DIICSA</p>
+            <div class="hero-title">
+              <img src={slide.icon} alt="" />
+              <h1>{slide.title}</h1>
+            </div>
+            <div class="hero-copy">
+              We are designed to support the needs of property and operations managers.
+              Whether you are working from an office, on the move or optimizing resources,
+              we have you covered.
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Our services</h2>
+        <div class="service-grid">
+          {services.map((service) => (
+            <a class="service-card" href={service.href}>
+              <img src={service.image} alt={service.title} />
+              <span>{service.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Who are we?</p>
+          <h2>100% Mexican company founded in 2002</h2>
+          <p>
+            Specialized in design, construction and integral maintenance for companies and private clients,
+            with presence across Mexico.
+          </p>
+          <a class="button" href="/en/contacta-con-nosotras/">Get a quote</a>
+        </div>
+        <div class="about-grid">
+          {about.map((item) => (
+            <a class="about-card" href={item.href}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: clamp(520px, 66vw, 830px);
+    overflow: hidden;
+    background: var(--blue);
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    background-image: linear-gradient(rgba(0, 33, 78, 0.26), rgba(0, 33, 78, 0.18)), var(--hero-image);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-slide.is-active {
+    display: flex;
+  }
+
+  .hero-overlay {
+    width: min(1380px, 100%);
+  }
+
+  .hero-overlay > p {
+    margin: 0 0 16px;
+    color: var(--blue);
+    font-size: clamp(36px, 4vw, 62px);
+    font-weight: 800;
+  }
+
+  .hero-title {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 4vw, 60px);
+    min-height: 190px;
+    padding: 28px 42px;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.68);
+  }
+
+  .hero-title img {
+    width: clamp(70px, 9vw, 132px);
+    height: clamp(70px, 9vw, 132px);
+    object-fit: contain;
+  }
+
+  .hero-title h1 {
+    margin: 0;
+    color: var(--blue);
+    font-size: clamp(56px, 8vw, 132px);
+    line-height: 1;
+  }
+
+  .hero-copy {
+    width: min(1110px, 78%);
+    margin: 14px auto 0;
+    padding: 24px 30px;
+    border-radius: 24px;
+    background: var(--blue);
+    color: #fff;
+    font-size: clamp(20px, 2.1vw, 31px);
+    line-height: 1.45;
+  }
+
+  .section {
+    padding: 64px 24px;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .service-card {
+    display: grid;
+    gap: 16px;
+    color: #777;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .service-card img {
+    width: 100%;
+    aspect-ratio: 850 / 519;
+    object-fit: cover;
+  }
+
+  .section-muted {
+    background: #f6f7f9;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .eyebrow {
+    margin: 0 0 12px;
+    color: #777;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .split p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .button {
+    display: inline-flex;
+    margin-top: 18px;
+    padding: 13px 18px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .about-card {
+    min-height: 170px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .about-card h3 {
+    margin: 0 0 16px;
+    color: var(--pink);
+    font-size: 28px;
+  }
+
+  .about-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 860px) {
+    .hero {
+      min-height: 640px;
+    }
+
+    .hero-title {
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 0;
+    }
+
+    .hero-copy {
+      width: 100%;
+    }
+
+    .service-grid,
+    .split,
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

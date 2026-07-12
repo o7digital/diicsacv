@@ -1,14 +1,26 @@
 ---
-import { asset, navItems } from '../data/site.js';
+import { asset, navItems, navItemsEn } from '../data/site.js';
 
 const {
   title = 'DIICSA // Constructora mexicana',
   description = 'Constructora mexicana especializada en diseno, construccion y mantenimiento integral.',
+  lang = 'es',
 } = Astro.props;
+
+const isEnglish = lang === 'en';
+const navigation = isEnglish ? navItemsEn : navItems;
+const currentPath = Astro.url.pathname;
+const spanishHref = isEnglish ? currentPath.replace(/^\/en(?=\/|$)/, '') || '/' : currentPath;
+const englishHref = isEnglish ? currentPath : `/en${currentPath === '/' ? '/' : currentPath}`;
+const scheduleLabel = isEnglish ? 'Monday to Friday, 8 to 17h' : 'Lunes a Viernes, 8 a 17h';
+const privacyLabel = isEnglish ? 'Privacy Notice' : 'Aviso de Privacidad';
+const footerText = isEnglish
+  ? 'DIICSA // Mexican Construction Company | All rights reserved'
+  : 'DIICSA // Constructora Mexicana | Todos los derechos reservados';
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,18 +31,22 @@ const {
     <header class="site-header">
       <div class="topbar">
         <a href="tel:525526020324">+52 55 2602 0324</a>
-        <span>Lunes a Viernes, 8 a 17h</span>
+        <span>{scheduleLabel}</span>
         <nav aria-label="Social">
           <a href="https://wa.me/525526020324">WhatsApp</a>
           <a href="https://www.linkedin.com/company/diicsacv">LinkedIn</a>
         </nav>
+        <nav class="language-nav" aria-label="Language">
+          <a class:list={[!isEnglish && 'is-active']} href={spanishHref}>ES</a>
+          <a class:list={[isEnglish && 'is-active']} href={englishHref}>EN</a>
+        </nav>
       </div>
       <div class="nav-wrap">
-        <a class="brand" href="/">
+        <a class="brand" href={isEnglish ? '/en/' : '/'}>
           <img src={asset('2022/10/logo_diicsa.jpg')} alt="DIICSA" />
         </a>
         <nav class="main-nav" aria-label="Principal">
-          {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+          {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
         </nav>
       </div>
     </header>
@@ -40,8 +56,8 @@ const {
     <footer class="site-footer">
       <div class="container footer-grid">
         <img src={asset('2022/10/logo_diicsa.jpg')} alt="DIICSA" />
-        <p>DIICSA // Constructora Mexicana | Todos los derechos reservados</p>
-        <a href="/aviso-privacidad/">Aviso de Privacidad</a>
+        <p>{footerText}</p>
+        <a href={isEnglish ? '/en/aviso-privacidad/' : '/aviso-privacidad/'}>{privacyLabel}</a>
       </div>
     </footer>
   </body>
@@ -100,6 +116,21 @@ const {
     gap: 10px;
     color: var(--blue);
     font-weight: 700;
+  }
+
+  .language-nav {
+    padding-left: 12px;
+    border-left: 1px solid var(--line);
+  }
+
+  .language-nav a {
+    opacity: 0.55;
+  }
+
+  .language-nav a.is-active {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
   .nav-wrap {

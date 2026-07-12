@@ -9,6 +9,15 @@ export const navItems = [
   { label: 'Contacto', href: '/contacta-con-nosotras/' },
 ];
 
+export const navItemsEn = [
+  { label: 'Home', href: '/en/' },
+  { label: 'About', href: '/en/historia/' },
+  { label: 'Presence', href: '/en/presencia/' },
+  { label: 'Services', href: '/en/edificacion-y-rehabilitacion/' },
+  { label: 'Clients', href: '/en/clientes/' },
+  { label: 'Contact', href: '/en/contacta-con-nosotras/' },
+];
+
 export const servicePages = [
   {
     slug: 'edificacion-y-rehabilitacion',
@@ -249,3 +258,244 @@ export const pages = [
 ];
 
 export const pagesBySlug = Object.fromEntries(pages.map((page) => [page.slug, page]));
+
+export const servicePagesEn = [
+  {
+    slug: 'edificacion-y-rehabilitacion',
+    title: 'Building and Rehabilitation',
+    image: asset('2019/07/intro1.jpg'),
+    summary:
+      'We execute building, rehabilitation and space adaptation work with planning, supervision and quality control.',
+  },
+  {
+    slug: 'obra-electrica-alta-y-media',
+    title: 'High and Medium Voltage Electrical Work',
+    image: asset('2019/07/service6.jpg'),
+    summary:
+      'We develop electrical work for industrial, commercial and infrastructure projects with a focus on safety and operational continuity.',
+  },
+  {
+    slug: 'obra-de-procesos-mecanica',
+    title: 'Mechanical Process Work',
+    image: asset('2019/06/blog5.jpg'),
+    summary:
+      'We integrate mechanical process installations and solutions to support production operations and specialized maintenance.',
+  },
+  {
+    slug: 'obra-civil-en-general',
+    title: 'General Civil Works',
+    image: asset('2019/07/service5.jpg'),
+    summary:
+      'We build and maintain general civil works with technical teams prepared for projects of different scales.',
+  },
+];
+
+export const pagesEn = [
+  {
+    slug: 'bienvenidos',
+    title: 'Welcome',
+    eyebrow: 'DIICSA',
+    image: asset('2021/11/attractive-female-person-welcoming-her-business-partners.jpg'),
+    body: [
+      'We are a Mexican company specialized in design, construction and integral maintenance for companies and private clients.',
+      'Our team supports each project from planning to delivery, with a focus on quality, communication and compliance.',
+    ],
+  },
+  {
+    slug: 'vision',
+    title: 'Vision',
+    eyebrow: 'About us',
+    image: asset('2021/11/road-in-mountains.jpg'),
+    body: [
+      'To remain at the forefront as leaders in construction, maintenance and technical assessment for automotive components.',
+      'We work with a vision of continuous improvement, compliance and professional response for industrial, commercial and private projects.',
+    ],
+  },
+  {
+    slug: 'mision',
+    title: 'Mission',
+    eyebrow: 'About us',
+    image: asset('2021/11/architects-team-and-engineers-looking-paper-plans-at-construction-site.jpg'),
+    body: [
+      'To build, promote, analyze, develop, project and provide integral maintenance or outsourced services, exceeding our clients needs.',
+      'Our goal is to deliver viable, organized solutions backed by trained personnel.',
+    ],
+  },
+  {
+    slug: 'politica',
+    title: 'Policy',
+    eyebrow: 'About us',
+    image: asset('2021/11/close-up-of-hands-with-ruler-measuring-blueprint.jpg'),
+    body: [
+      'At DIICSA we are committed to our clients, our people, the environment and our country as a multifunctional company.',
+      'We promote projects with responsibility, safety and operational discipline.',
+    ],
+  },
+  {
+    slug: 'capacitacion',
+    title: 'Training',
+    eyebrow: 'About us',
+    image: asset('2021/11/presentation-and-training-in-business-office.jpg'),
+    body: [
+      'We have highly trained personnel as well as accredited instructors to strengthen the quality of our services.',
+      'Continuous training allows us to respond precisely to each project requirement.',
+    ],
+  },
+  {
+    slug: 'historia',
+    title: 'History',
+    eyebrow: 'About us',
+    image: asset('2021/11/mexico-jungle-landscape.jpg'),
+    body: [
+      'DIICSA is a 100% Mexican company founded in 2002, specialized in design, construction and integral maintenance for companies and private clients.',
+      'Today we have presence across Mexico, supporting projects with technical experience and practical focus.',
+    ],
+  },
+  ...servicePagesEn.map((page) => ({
+    ...page,
+    eyebrow: 'Services',
+    body: [
+      page.summary,
+      'Each project is handled with planning, supervision and execution aligned with the clients operational needs.',
+    ],
+  })),
+  {
+    slug: 'clientes',
+    title: 'Clients',
+    eyebrow: 'Experience',
+    image: asset('2021/11/architects-working-on-blueprints.jpg'),
+    body: [
+      'We have worked with corporations, industrial plants, training centers and companies that require continuity, safety and technical response.',
+      'Our work focuses on long-term relationships and clear solutions for each operation.',
+    ],
+  },
+  {
+    slug: 'presencia',
+    title: 'Presence',
+    eyebrow: 'Coverage',
+    image: asset('2021/11/mexico-jungle-landscape.jpg'),
+    body: [
+      'DIICSA has presence across Mexico to serve construction, maintenance and specialized service projects.',
+      'Our national coverage allows us to coordinate teams, resources and suppliers according to each project scope.',
+    ],
+  },
+  {
+    slug: 'certificados',
+    title: 'Certificates',
+    eyebrow: 'Compliance',
+    image: asset('2019/06/service2.jpg'),
+    body: [
+      'Our documentation supports DIICSA commitment to quality, safety, environmental management and continuous improvement.',
+    ],
+    documents: [
+      { label: 'Quality ISO 9001:2015', href: asset('2021/12/DIICSA-CERT-156CS.pdf') },
+      { label: 'ISO 45001:2018', href: asset('2021/12/DICCSA-001-CERT001SAST.pdf') },
+      { label: 'Environmental ISO 14001:2015', href: asset('2021/12/DICCSA-CERT-013CA.pdf') },
+      { label: 'Management Policy 2021', href: asset('2021/12/POLITICA-DE-GESTION-2021.pdf') },
+    ],
+  },
+  {
+    slug: 'contacta-con-nosotras',
+    title: 'Contact us',
+    eyebrow: 'Contact',
+    image: asset('2021/11/shopping-commercial-center-concept-with-fashion-lady-with-phone-speaking-and-looking.jpg'),
+    body: [
+      'Tell us what you need to build, maintain or rehabilitate. Our team can help review the scope and prepare a quote.',
+    ],
+    contact: true,
+  },
+  {
+    slug: 'aviso-privacidad',
+    title: 'Privacy Notice',
+    eyebrow: 'Legal',
+    image: asset('2021/11/close-up-of-hands-with-ruler-measuring-blueprint.jpg'),
+    body: [
+      'DIICSA INFRAESTRUCTURA is responsible for processing personal data in accordance with applicable privacy laws in Mexico and other relevant frameworks.',
+    ],
+    sections: [
+      {
+        heading: 'Privacy Notice - DIICSA INFRAESTRUCTURA',
+        paragraphs: [
+          'DIICSA INFRAESTRUCTURA ("DIICSA"), located at Calle Bosque de Fresno, MZA 74 Lote 11 Apartado A, Lomas de Bosques, 54765 Cuautitlán Izcalli, CDMX, Mexico, phone +52 55 3396 2097, is responsible for processing personal data under the Federal Law on Protection of Personal Data Held by Private Parties (Mexico), the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA).',
+        ],
+      },
+      {
+        heading: '1. Data we collect',
+        paragraphs: ['We may collect:'],
+        items: [
+          'Identification data such as name, address, email and phone number.',
+          'Tax and financial data for invoicing and payment purposes.',
+          'Technical information such as IP address, cookies and browsing history on our site.',
+        ],
+      },
+      {
+        heading: '2. Processing purposes',
+        paragraphs: ['Your personal data will be processed to:'],
+        items: [
+          'Provide contracted services and products.',
+          'Comply with legal and tax obligations.',
+          'Handle administrative and invoicing purposes.',
+          'Send relevant communications, notices and service updates.',
+          'Improve security and user experience in our systems.',
+        ],
+      },
+      {
+        heading: '3. Legal basis',
+        paragraphs: ['Your data is processed in accordance with:'],
+        items: [
+          'Mexico: Federal Law on Protection of Personal Data Held by Private Parties and its regulations.',
+          'European Union: Regulation (EU) 2016/679 (GDPR).',
+          'United States: CCPA and other applicable laws.',
+        ],
+      },
+      {
+        heading: '4. Data transfers',
+        paragraphs: [
+          'We may share your data with domestic or international third parties only to fulfill the stated purposes, always applying the necessary security measures.',
+        ],
+      },
+      {
+        heading: '5. ARCO rights and other privacy rights',
+        paragraphs: [
+          'You have the right to Access, Rectify, Cancel or Object (ARCO) to the processing of your data, as well as other rights under GDPR and CCPA such as portability and deletion.',
+          'To exercise these rights, send your request to privacidad@diicsacv.com with the following information:',
+        ],
+        items: [
+          'Full name and copy of official identification.',
+          'Clear description of the data and the right you wish to exercise.',
+        ],
+      },
+      {
+        heading: '6. Cookies and similar technologies',
+        paragraphs: [
+          'Our website uses cookies and tracking technologies to improve the user experience. You can disable them in your browser.',
+        ],
+      },
+      {
+        heading: '7. Data retention',
+        paragraphs: [
+          'Your data will be kept only for the time required to fulfill the described purposes and legal obligations.',
+        ],
+      },
+      {
+        heading: '8. Changes to this Privacy Notice',
+        paragraphs: [
+          'We reserve the right to modify this notice at any time. Updates will be available on our website: www.diicsacv.com.',
+          'Last updated: August 2025',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'privacy-policy-2',
+    title: 'Privacy Policy',
+    eyebrow: 'Legal',
+    image: asset('2021/11/close-up-of-hands-with-ruler-measuring-blueprint.jpg'),
+    body: [
+      'This page summarizes how DIICSA handles information submitted through its digital channels.',
+      'Contact information is used to respond to requests, prepare quotes and maintain communication related to DIICSA services.',
+    ],
+  },
+];
+
+export const pagesEnBySlug = Object.fromEntries(pagesEn.map((page) => [page.slug, page]));

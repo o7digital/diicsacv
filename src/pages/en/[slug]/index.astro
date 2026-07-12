@@ -1,0 +1,200 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { pagesEn } from '../../../data/site.js';
+
+export function getStaticPaths() {
+  return pagesEn.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+---
+
+<SiteLayout lang="en" title={`${page.title} - DIICSA`} description={page.body[0]}>
+  <main>
+    <section class="page-hero" style={`--hero-image: url('${page.image}')`}>
+      <div class="container">
+        <p class="eyebrow">{page.eyebrow}</p>
+        <h1>{page.title}</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container content-grid">
+        <article class="prose">
+          {page.body.map((paragraph) => <p>{paragraph}</p>)}
+
+          {page.sections?.map((section) => (
+            <section class="legal-section">
+              <h2>{section.heading}</h2>
+              {section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+              {section.items && (
+                <ul>
+                  {section.items.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+            </section>
+          ))}
+
+          {page.contact && (
+            <>
+              <form class="contact-form" action="https://formspree.io/f/xkodwzad" method="POST">
+                <input type="hidden" name="_subject" value="New contact from DIICSA" />
+                <input
+                  type="hidden"
+                  name="_redirect"
+                  value="https://diicsacv.com/en/contacta-con-nosotras/"
+                />
+                <label>
+                  Name
+                  <input type="text" name="name" autocomplete="name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+                <label>
+                  Phone
+                  <input type="tel" name="phone" autocomplete="tel" />
+                </label>
+                <label>
+                  Message
+                  <textarea name="message" rows="5" required></textarea>
+                </label>
+                <button class="button" type="submit">Send message</button>
+              </form>
+
+              <div class="contact-panel">
+                <a href="tel:525526020324">+52 55 2602 0324</a>
+                <a href="https://wa.me/525526020324">WhatsApp</a>
+                <a href="mailto:contacto@diicsacv.com">contacto@diicsacv.com</a>
+              </div>
+            </>
+          )}
+
+          {page.documents && (
+            <div class="document-grid">
+              {page.documents.map((document) => (
+                <a class="document-card" href={document.href}>
+                  <span>{document.label}</span>
+                  <strong>View PDF</strong>
+                </a>
+              ))}
+            </div>
+          )}
+        </article>
+
+        <aside>
+          <img class="feature-image" src={page.image} alt={page.title} />
+          <a class="button" href="/en/contacta-con-nosotras/">Request a quote</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .contact-panel {
+    display: grid;
+    gap: 12px;
+    margin-top: 30px;
+    padding: 24px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .legal-section {
+    margin-top: 34px;
+  }
+
+  .legal-section h2 {
+    margin: 0 0 16px;
+    color: var(--pink);
+    font-size: clamp(24px, 2vw, 32px);
+    line-height: 1.2;
+  }
+
+  .legal-section ul {
+    margin: 0 0 22px;
+    padding-left: 24px;
+  }
+
+  .legal-section li {
+    margin-bottom: 10px;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 18px;
+    margin-top: 30px;
+    padding: 26px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .contact-form label {
+    display: grid;
+    gap: 8px;
+    color: var(--ink);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    padding: 13px 14px;
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+  }
+
+  .contact-form .button {
+    width: fit-content;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .document-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .document-card {
+    display: grid;
+    gap: 10px;
+    min-height: 120px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .document-card span {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .document-card strong {
+    color: var(--pink);
+  }
+
+  aside {
+    display: grid;
+    gap: 22px;
+  }
+
+  @media (max-width: 760px) {
+    .document-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
