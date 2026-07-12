@@ -26,6 +26,18 @@ const { page } = Astro.props;
         <article class="prose">
           {page.body.map((paragraph) => <p>{paragraph}</p>)}
 
+          {page.sections?.map((section) => (
+            <section class="legal-section">
+              <h2>{section.heading}</h2>
+              {section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+              {section.items && (
+                <ul>
+                  {section.items.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+            </section>
+          ))}
+
           {page.contact && (
             <>
               <form class="contact-form" action="https://formspree.io/f/xkodwzad" method="POST">
@@ -92,6 +104,26 @@ const { page } = Astro.props;
     background: var(--blue);
     color: #fff;
     font-weight: 700;
+  }
+
+  .legal-section {
+    margin-top: 34px;
+  }
+
+  .legal-section h2 {
+    margin: 0 0 16px;
+    color: var(--pink);
+    font-size: clamp(24px, 2vw, 32px);
+    line-height: 1.2;
+  }
+
+  .legal-section ul {
+    margin: 0 0 22px;
+    padding-left: 24px;
+  }
+
+  .legal-section li {
+    margin-bottom: 10px;
   }
 
   .contact-form {

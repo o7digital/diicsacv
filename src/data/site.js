@@ -160,8 +160,80 @@ export const pages = [
     eyebrow: 'Legal',
     image: asset('2022/10/logo_diicsa.jpg'),
     body: [
-      'DIICSA protege los datos personales proporcionados por clientes, proveedores y visitantes conforme a las finalidades relacionadas con sus servicios.',
-      'Para ejercer derechos de acceso, rectificacion, cancelacion u oposicion, contacta a nuestro equipo por los medios oficiales publicados en este sitio.',
+      'DIICSA INFRAESTRUCTURA es responsable del tratamiento de sus datos personales conforme a la legislacion aplicable en Mexico y otros marcos de privacidad relevantes.',
+    ],
+    sections: [
+      {
+        heading: 'Aviso de Privacidad - DIICSA INFRAESTRUCTURA',
+        paragraphs: [
+          'DIICSA INFRAESTRUCTURA (en lo sucesivo, "DIICSA"), con domicilio en Calle Bosque de Fresno, MZA 74 Lote 11 Apartado A, Lomas de Bosques, 54765 Cuautitlán Izcalli, CDMX, México, teléfono +52 55 3396 2097, es responsable del tratamiento de sus datos personales conforme a lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (México), el Reglamento General de Protección de Datos (RGPD) y la California Consumer Privacy Act (CCPA).',
+        ],
+      },
+      {
+        heading: '1. Datos que recabamos',
+        paragraphs: ['Podemos recopilar:'],
+        items: [
+          'Datos de identificación (nombre, dirección, correo electrónico, teléfono).',
+          'Datos fiscales y financieros para fines de facturación y pagos.',
+          'Información técnica (dirección IP, cookies, historial de navegación en nuestro sitio).',
+        ],
+      },
+      {
+        heading: '2. Finalidades del tratamiento',
+        paragraphs: ['Sus datos personales serán tratados para:'],
+        items: [
+          'Proveer los servicios y productos contratados.',
+          'Cumplir con obligaciones legales y fiscales.',
+          'Fines administrativos y de facturación.',
+          'Enviar comunicaciones relevantes, avisos y actualizaciones de servicio.',
+          'Mejorar la seguridad y la experiencia del usuario en nuestros sistemas.',
+        ],
+      },
+      {
+        heading: '3. Fundamento legal',
+        paragraphs: ['El tratamiento de sus datos se realiza conforme a:'],
+        items: [
+          'México: Ley Federal de Protección de Datos Personales en Posesión de los Particulares y su Reglamento.',
+          'Unión Europea: Reglamento (UE) 2016/679 (RGPD).',
+          'Estados Unidos: CCPA (California Consumer Privacy Act) y demás leyes aplicables.',
+        ],
+      },
+      {
+        heading: '4. Transferencias de datos',
+        paragraphs: [
+          'Podremos compartir sus datos con terceros nacionales o internacionales únicamente para cumplir las finalidades mencionadas, garantizando siempre las medidas de seguridad necesarias.',
+        ],
+      },
+      {
+        heading: '5. Derechos ARCO y otros derechos de privacidad',
+        paragraphs: [
+          'Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse (ARCO) al tratamiento de sus datos, así como otros derechos previstos en el RGPD y la CCPA, como el derecho a la portabilidad y a solicitar la eliminación de sus datos.',
+          'Para ejercer estos derechos, envíe su solicitud a: privacidad@diicsacv.com con la siguiente información:',
+        ],
+        items: [
+          'Nombre completo y copia de identificación oficial.',
+          'Descripción clara de los datos y el derecho que desea ejercer.',
+        ],
+      },
+      {
+        heading: '6. Uso de cookies y tecnologías similares',
+        paragraphs: [
+          'Nuestro sitio web utiliza cookies y tecnologías de seguimiento para mejorar la experiencia del usuario. Usted puede deshabilitarlas desde su navegador.',
+        ],
+      },
+      {
+        heading: '7. Conservación de datos',
+        paragraphs: [
+          'Sus datos se conservarán únicamente por el tiempo necesario para cumplir con las finalidades descritas y obligaciones legales.',
+        ],
+      },
+      {
+        heading: '8. Cambios al Aviso de Privacidad',
+        paragraphs: [
+          'Nos reservamos el derecho de modificar este Aviso en cualquier momento. Las modificaciones estarán disponibles en nuestro sitio web: www.diicsacv.com.',
+          'Fecha de última actualización: Agosto 2025',
+        ],
+      },
     ],
   },
   {
