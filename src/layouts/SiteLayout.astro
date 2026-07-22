@@ -23,6 +23,41 @@ const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
 const spanishUrl = new URL(spanishHref, siteUrl).toString();
 const englishUrl = new URL(englishHref, siteUrl).toString();
 const socialImage = new URL(image || asset('2022/10/logo_diicsa.jpg'), siteUrl).toString();
+const keywords = isEnglish
+  ? [
+      'Mexican construction company',
+      'construction company in Mexico',
+      'industrial construction',
+      'integral maintenance',
+      'civil works',
+      'electrical work',
+      'mechanical work',
+      'building rehabilitation',
+      'building and rehabilitation',
+      'construction services',
+      'high and medium voltage electrical work',
+      'mechanical process work',
+      'industrial maintenance',
+      'certified construction company',
+      'industrial contractor in Mexico',
+    ].join(', ')
+  : [
+      'constructora mexicana',
+      'empresa constructora en México',
+      'construcción industrial',
+      'mantenimiento integral',
+      'obra civil',
+      'obra eléctrica',
+      'obra mecánica',
+      'rehabilitación de edificios',
+      'edificación y rehabilitación',
+      'servicios de construcción',
+      'obra eléctrica alta y media tensión',
+      'obra de procesos mecánica',
+      'mantenimiento industrial',
+      'constructora certificada',
+      'contratista industrial en México',
+    ].join(', ');
 const scheduleLabel = isEnglish ? 'Monday to Friday, 8 to 17h' : 'Lunes a Viernes, 8 a 17h';
 const privacyLabel = isEnglish ? 'Privacy Notice' : 'Aviso de Privacidad';
 const footerText = isEnglish
@@ -37,6 +72,7 @@ const footerText = isEnglish
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="es-MX" href={spanishUrl} />
