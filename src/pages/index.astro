@@ -4,17 +4,17 @@ import { asset, servicePages } from '../data/site.js';
 
 const slides = [
   {
-    title: 'Arquitectura',
+    title: 'Constructora mexicana',
     icon: asset('2022/03/business_black_48dp.svg'),
     image: asset('2021/11/architects-working-on-blueprints.jpg'),
   },
   {
-    title: 'Preparacion del sitio',
+    title: 'Preparación del sitio',
     icon: asset('2022/03/grid_view_black_48dp.svg'),
     image: asset('2021/11/mini-excavator-digging-preparing-ground-under-home-garden.jpg'),
   },
   {
-    title: 'Construccion',
+    title: 'Construcción',
     icon: asset('2022/03/view_in_ar_black_48dp.svg'),
     image: asset('2021/11/a-man-worker-outdoors-on-construction-site-working.jpg'),
   },
@@ -47,7 +47,7 @@ const services = [
 const about = [
   {
     title: 'VISION',
-    text: 'Mantenernos a la cabeza como lideres en el ramo de construccion, mantenimiento y dictaminacion de componentes automotrices.',
+    text: 'Mantenernos a la cabeza como líderes en el ramo de construcción, mantenimiento y dictaminación de componentes automotrices.',
     href: '/vision/',
   },
   {
@@ -57,7 +57,7 @@ const about = [
   },
   {
     title: 'POLITICA',
-    text: 'Estamos comprometidos con nuestros clientes, nuestra gente, el medio ambiente y nuestro pais como empresa multifuncional.',
+    text: 'Estamos comprometidos con nuestros clientes, nuestra gente, el medio ambiente y nuestro país como empresa multifuncional.',
     href: '/politica/',
   },
   {
@@ -68,7 +68,11 @@ const about = [
 ];
 ---
 
-<SiteLayout>
+<SiteLayout
+  title="DIICSA - Constructora mexicana"
+  description="Constructora mexicana especializada en diseño, construcción y mantenimiento integral para proyectos industriales, comerciales y particulares."
+  image={slides[0].image}
+>
     <main>
       <section class="hero" aria-label="DIICSA servicios">
         {slides.map((slide, index) => (
@@ -80,9 +84,9 @@ const about = [
                 <h1>{slide.title}</h1>
               </div>
               <div class="hero-copy">
-                Estamos disenados para respaldar las necesidades de los administradores de propiedades.
-                Ya sea que este trabajando en una oficina, sobre la marcha o buscando optimizar las
-                finanzas, lo tenemos cubierto.
+                Estamos diseñados para respaldar las necesidades de administradores, empresas y particulares.
+                Ya sea que necesite construcción, mantenimiento o rehabilitación, nuestro equipo puede
+                acompañar el proyecto de inicio a entrega.
               </div>
             </div>
           </article>
@@ -106,13 +110,13 @@ const about = [
       <section class="section section-muted">
         <div class="container split">
           <div>
-            <p class="eyebrow">Quienes somos?</p>
+            <p class="eyebrow">¿Quiénes somos?</p>
             <h2>Empresa 100% mexicana fundada en 2002</h2>
             <p>
-              Especializada en diseno, construccion y mantenimiento integral a empresas y particulares,
-              con presencia en la Republica Mexicana.
+              Especializada en diseño, construcción y mantenimiento integral a empresas y particulares,
+              con presencia en la República Mexicana.
             </p>
-            <a class="button" href="/contacta-con-nosotras/">Consigue una cotizacion</a>
+            <a class="button" href="/contacta-con-nosotras/">Consigue una cotización</a>
           </div>
           <div class="about-grid">
             {about.map((item) => (

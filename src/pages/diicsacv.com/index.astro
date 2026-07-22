@@ -3,8 +3,11 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const html = await readFile(join(process.cwd(), 'diicsacv.com', 'index.html'), 'utf8');
+const noindexHtml = html.includes("name='robots'") || html.includes('name="robots"')
+  ? html.replace(/<meta\s+name=['"]robots['"][^>]*>/i, '<meta name="robots" content="noindex, follow">')
+  : html.replace(/<head>/i, '<head><meta name="robots" content="noindex, follow">');
 
-return new Response(html, {
+return new Response(noindexHtml, {
   headers: {
     'content-type': 'text/html; charset=utf-8',
   },

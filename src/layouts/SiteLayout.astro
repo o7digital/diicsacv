@@ -6,6 +6,8 @@ const {
   title = 'DIICSA // Constructora mexicana',
   description = 'Constructora mexicana especializada en diseno, construccion y mantenimiento integral.',
   lang = 'es',
+  image,
+  noindex = false,
 } = Astro.props;
 
 const isEnglish = lang === 'en';
@@ -13,6 +15,14 @@ const navigation = isEnglish ? navItemsEn : navItems;
 const currentPath = Astro.url.pathname;
 const spanishHref = isEnglish ? currentPath.replace(/^\/en(?=\/|$)/, '') || '/' : currentPath;
 const englishHref = isEnglish ? currentPath : `/en${currentPath === '/' ? '/' : currentPath}`;
+const siteUrl = 'https://diicsacv.com';
+const canonicalPath = noindex
+  ? currentPath.replace(/^\/diicsacv\.com(?=\/|$)/, '') || '/'
+  : currentPath;
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const spanishUrl = new URL(spanishHref, siteUrl).toString();
+const englishUrl = new URL(englishHref, siteUrl).toString();
+const socialImage = new URL(image || asset('2022/10/logo_diicsa.jpg'), siteUrl).toString();
 const scheduleLabel = isEnglish ? 'Monday to Friday, 8 to 17h' : 'Lunes a Viernes, 8 a 17h';
 const privacyLabel = isEnglish ? 'Privacy Notice' : 'Aviso de Privacidad';
 const footerText = isEnglish
@@ -27,6 +37,22 @@ const footerText = isEnglish
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="es-MX" href={spanishUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="x-default" href={spanishUrl} />
+    <meta property="og:site_name" content="DIICSA" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={isEnglish ? 'en_US' : 'es_MX'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RWZ9WLNQL9"></script>
     <script is:inline>
