@@ -127,10 +127,13 @@ const footerText = isEnglish
     <OliviaChat />
 
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <img src={asset('2022/10/logo_diicsa.jpg')} alt="DIICSA" />
-        <p>{footerText}</p>
-        <a href={isEnglish ? '/en/aviso-privacidad/' : '/aviso-privacidad/'}>{privacyLabel}</a>
+      <div class="container">
+        <div class="footer-grid">
+          <img src={asset('2022/10/logo_diicsa.jpg')} alt="DIICSA" />
+          <p>{footerText}</p>
+          <a href={isEnglish ? '/en/aviso-privacidad/' : '/aviso-privacidad/'}>{privacyLabel}</a>
+        </div>
+        <p class="footer-keywords">{keywords}</p>
       </div>
     </footer>
   </body>
@@ -373,6 +376,15 @@ const footerText = isEnglish
     height: 73px;
     object-fit: contain;
     background: #fff;
+  }
+
+  .footer-keywords {
+    max-width: 980px;
+    margin: 26px auto 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: center;
   }
 
   @media (max-width: 900px) {
