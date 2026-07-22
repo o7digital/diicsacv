@@ -218,6 +218,7 @@ export const pages = [
         paragraphs: [
           'Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse (ARCO) al tratamiento de sus datos, así como otros derechos previstos en el RGPD y la CCPA, como el derecho a la portabilidad y a solicitar la eliminación de sus datos.',
           'Para ejercer estos derechos, envíe su solicitud a: privacidad@diicsacv.com con la siguiente información:',
+          'Plazos legales (México): DIICSA responderá a su solicitud en un máximo de 20 días hábiles y, en caso de ser procedente, hará efectiva la acción solicitada en un plazo adicional de 15 días hábiles.',
         ],
         items: [
           'Nombre completo y copia de identificación oficial.',
@@ -459,6 +460,7 @@ export const pagesEn = [
         paragraphs: [
           'You have the right to Access, Rectify, Cancel or Object (ARCO) to the processing of your data, as well as other rights under GDPR and CCPA such as portability and deletion.',
           'To exercise these rights, send your request to privacidad@diicsacv.com with the following information:',
+          'Legal deadlines (Mexico): DIICSA will respond to your request within a maximum of 20 business days and, if applicable, will carry out the requested action within an additional period of 15 business days.',
         ],
         items: [
           'Full name and copy of official identification.',
