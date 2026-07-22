@@ -424,7 +424,12 @@ const siteCode = 'diicsacv';
       isLoading = true;
       render();
       try {
-        const response = await fetch(leadEndpoint, {
+        await storeChannelMessage(
+          `Lead: ${lead.firstName} ${lead.lastName} · ${lead.email} · ${lead.phone}`,
+          { type: 'lead', ...lead },
+        );
+
+        fetch(leadEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -437,12 +442,10 @@ const siteCode = 'diicsacv';
             siteCode,
             message: `Lead Chat Olivia DIICSA (${lang}, ${siteCode})\n\n${transcript()}`,
           }),
+        }).catch(() => {
+          // The Channel Manager is the source of truth. Email lead delivery must not block chat.
         });
-        if (!response.ok) throw new Error('Lead delivery failed');
-        await storeChannelMessage(
-          `Lead: ${lead.firstName} ${lead.lastName} · ${lead.email} · ${lead.phone}`,
-          { type: 'lead', ...lead },
-        );
+
         leadSent = true;
         messages.push({ role: 'assistant', content: t.leadThanks });
       } catch (_error) {
